@@ -4,11 +4,17 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "permisos")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Permiso extends BaseEntity{
     @Column(name = "nombre")
+    @Getter @Setter
     private String nombre;
 
     /**
@@ -22,14 +28,28 @@ public class Permiso extends BaseEntity{
     @JsonProperty("role_id") //nombre del objeto de json
     @ManyToOne(fetch = FetchType.LAZY) //trae solo datos necesarios, evitamos un stackoverflow
     @JoinColumn(name = "role_id") //nombre de la columna
+    @Getter @Setter
     private Role role;
 
-
-
-    public String getNombre() {
-        return nombre;
+    
+    //esto lo agregamos porque usamos LAZY
+    @Override
+    public String toString() {
+        return "Permiso{" +
+                "nombre='" + nombre + '\'' +
+                '}';
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Permiso permiso = (Permiso) o;
+        return Objects.equals(nombre, permiso.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre);
     }
 }

@@ -1,13 +1,17 @@
 package com.edteam.demo.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "role")
 public class Role extends BaseEntity {
+
     @Column(name = "nombre")
+    @Getter @Setter
     private String nombre;
 
     /**
@@ -18,18 +22,4 @@ public class Role extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL
            , fetch = FetchType.EAGER, mappedBy = "role") //mapea t0do esto el rol de usuario
     private Set<Permiso> permisos; //trae los datos
-
-    public void setPermisos(Set<Permiso> lista) {
-        permisos = lista;
-    }
-
-    public Set<Permiso> getPermiso(){
-        return permisos;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 }
