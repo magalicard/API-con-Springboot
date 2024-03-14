@@ -3,15 +3,14 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.*;
+
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "permisos")
-@NoArgsConstructor
-@AllArgsConstructor
 public class Permiso extends BaseEntity{
     @Column(name = "nombre")
     @Getter @Setter

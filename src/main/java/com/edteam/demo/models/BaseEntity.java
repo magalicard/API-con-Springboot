@@ -1,7 +1,5 @@
 package com.edteam.demo.models;
-
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
@@ -11,17 +9,17 @@ public class BaseEntity {
     @Column(name = "id", updatable = false, nullable = false) //no se va a poder modificar, y no puede tener valor nulo
     private long id;
 
-    @Column(columnDefinition = "DATETIME", updatable = false, nullable = false)
-    private Date createdDate;
+    @Column(columnDefinition = "DATETIME", updatable = false)
+    protected Date createdDate;
 
-    @Column(columnDefinition = "DATETIME", updatable = false, nullable = false)
+    @Column(columnDefinition = "DATETIME", updatable = false)
     protected Date updatedDate;
 
     @PrePersist
     protected void onCreate(){
         updatedDate = new Date();
-        if (createdDate == null) {
-            createdDate = new Date();
+        if (createdDate == null) { //si no hay fecha creada
+            createdDate = new Date(); //la crea
         }
     }
     public long getId() {

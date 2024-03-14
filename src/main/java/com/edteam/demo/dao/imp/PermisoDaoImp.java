@@ -2,16 +2,16 @@ package com.edteam.demo.dao.imp;
 
 import com.edteam.demo.dao.PermisoDao;
 import com.edteam.demo.models.Permiso;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Transactional
 @Repository
 public class PermisoDaoImp implements PermisoDao {
-
     @PersistenceContext
     protected EntityManager entityManager;
 
@@ -30,22 +30,23 @@ public class PermisoDaoImp implements PermisoDao {
 
     @Transactional
     @Override
-    public Permiso register(Permiso Permiso) {
-        entityManager.merge(Permiso);
-        return Permiso;
+    public Permiso register(Permiso permiso) {
+        entityManager.merge(permiso);
+        return permiso;
     }
 
     @Transactional
     @Override
-    public Permiso update(Permiso Permiso) {
-        entityManager.merge(Permiso);
-        return Permiso;
+    public Permiso update(Permiso permiso) {
+        entityManager.merge(permiso);
+        return permiso;
     }
 
     @Transactional
     @Override
     public void delete(long id) {
-        Permiso Permiso = get(id);
-        entityManager.remove(Permiso);
+        Permiso permiso = get(id);
+        entityManager.remove(permiso);
     }
+
 }

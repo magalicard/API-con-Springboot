@@ -8,7 +8,7 @@ public interface RoleDao {
 
     List<Role> getAll();
     Role get(long id);
-    Role register(Role Role);
-    Role update(Role Role);
+    Role register(Role role);
+    Role update(Role role);
     void delete(long id);
 }

@@ -2,16 +2,15 @@ package com.edteam.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 import lombok.*;
 
-
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user")
 @ToString
-@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends BaseEntity {
@@ -22,7 +21,6 @@ public class User extends BaseEntity {
     @JoinColumn(name="role_id")
     @Getter @Setter
     private Role role;
-
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "password")
@@ -48,4 +46,19 @@ public class User extends BaseEntity {
     @Column(name = "fecha_nac")
     @Getter @Setter
     private Date fechaNac;
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(role, user.role) && Objects.equals(password, user.password) && Objects.equals(nombre, user.nombre) && Objects.equals(apellido, user.apellido) && Objects.equals(email, user.email) && Objects.equals(telefono, user.telefono) && Objects.equals(fechaNac, user.fechaNac);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(role, password, nombre, apellido, email, telefono, fechaNac);
+    }
 }
