@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ImageService {
@@ -29,7 +30,9 @@ public class ImageService {
         newImage.setTipo(image.getTipo());
         newImage.setTamano(image.getTamano());
         newImage.setPixel(image.getPixel());
-
+        // Genera un UUID y lo establece en la imagen
+        UUID uuid = UUID.randomUUID();
+        newImage.setUuid(UUID.fromString(uuid.toString()));
         // Llama al método add con la nueva instancia
         imageDao.add(newImage);
 

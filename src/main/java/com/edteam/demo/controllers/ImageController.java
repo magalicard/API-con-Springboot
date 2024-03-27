@@ -59,7 +59,7 @@ public class ImageController {
      * y se encarga de manejar la solicitud HTTP para cargar y
      * guardar múltiples imágenes.
      */
-    /*
+
     @PostMapping("/images")
     public ResponseEntity<?> uploadImages(@RequestHeader("Authorization") String authorization, @RequestParam("files") MultipartFile[] files) throws IOException {
         // Procesa los archivos y guarda las imágenes
@@ -76,7 +76,7 @@ public class ImageController {
                 imageUuids.add(String.valueOf(image.getUuid())); // Asume que Image tiene un campo uuid
             }
         }
-*/
+
         // Crea y devuelve la respuesta
         ImageResponse response = new ImageResponse();
         response.setData(imageUuids);
