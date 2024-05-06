@@ -1,5 +1,4 @@
-
-##**API REST Spring MVC **
+<h1>API REST Spring MVC</h1>
 
 Esta API está construida utilizando Spring MVC, proporcionando una interfaz RESTful tradicional  para gestionar datos de clientes. Se basa en las siguientes tecnologías:
 
